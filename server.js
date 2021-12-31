@@ -29,14 +29,14 @@ const db=knex({
 	client:'pg',
 	connection:{
 		connectionString:process.env.DATABASE_URL,
-		ssl:true,
+		ssl:true
 	}
 });
 
 
-db.select('*').from('users').then(data=>{
-	//console.log(data);
-});
+// db.select('*').from('users').then(data=>{
+// 	//console.log(data);
+// });
 
 
 const app=express();
