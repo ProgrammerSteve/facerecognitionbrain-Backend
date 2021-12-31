@@ -12,14 +12,24 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 
+// const db=knex({
+// 	client:'pg',
+// 	connection:{
+// 		host:'127.0.0.1',
+// 		port:'5432',
+// 		user:'postgres',
+// 		password:'test',
+// 		database:'smartbrain'
+// 	}
+// });
+
+
+
 const db=knex({
 	client:'pg',
 	connection:{
-		host:'127.0.0.1',
-		port:'5432',
-		user:'postgres',
-		password:'test',
-		database:'smartbrain'
+		connectionString:process.env.DATABASE_URL,
+		ssl:true,
 	}
 });
 
