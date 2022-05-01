@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Backend API
+  smart-brain-api:
+    container_name: backend-docker-server
+    # image: node:16.13.0
+    build: ./
+    command: npm start
+    working_dir: /usr/src/smart-brain-api
+    environment:
+      POSTGRES_USER: steven
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+      REDIS_URI: redis://redis:6379
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/smart-brain-api
+
+  # Postgres
+  postgres:
+    # the image already has the name postgres and runs an error
+    # when you try to name the container_name postgres, which
+    # is the default name
+    container_name: postgres-docker-server
+    environment:
+      POSTGRES_USER: steven
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    # image: postgres
+    build: ./postgres
+    ports:
+      - "5431:5432/tcp"
+
+  #Redis
+  redis:
+    container_name: redis-docker-server
+    image: redis
+    ports:
+      - "6379:6379"
