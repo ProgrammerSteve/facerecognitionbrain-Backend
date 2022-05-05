@@ -91,6 +91,10 @@ app.post("/register",(req,res)=>{register.handleRegister(req,res,db,bcrypt)});
 app.post("/imageurl", auth.requireAuth, (req,res)=>{image.handleApiCall(req,res)});
 app.post("/profile/:id", auth.requireAuth, (req,res)=>{profile.handleProfileUpdate(req,res,db)});
 
-app.listen(8080, ()=> {
-	console.log('app is running on port 8080');
+app.listen(process.env.PORT || 8080, ()=> {
+	if(process.env.PORT===8080){
+		console.log('app is running on port 8080');
+	}else{
+		console.log(`app is running on port ${process.env.PORT}`);
+	}
   })
