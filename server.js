@@ -92,5 +92,5 @@ app.post("/imageurl", auth.requireAuth, (req,res)=>{image.handleApiCall(req,res)
 app.post("/profile/:id", auth.requireAuth, (req,res)=>{profile.handleProfileUpdate(req,res,db)});
 
 app.listen(8080, ()=> {
-	console.log('app is running on port 3001');
+	console.log('app is running on port 8080');
   })
