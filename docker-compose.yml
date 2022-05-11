@@ -14,8 +14,8 @@ services:
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
       REDIS_URI: redis://redis:6379
-    # ports:
-    #   - "3001:3001"
+    ports:
+      - "3001:3001"
     volumes:
       - ./:/usr/src/smart-brain-api
 
@@ -32,12 +32,12 @@ services:
       POSTGRES_HOST: postgres
     # image: postgres
     build: ./postgres
-    # ports:
-    #   - "5431:5432/tcp"
+    ports:
+      - "5431:5432/tcp"
 
   #Redis
   redis:
     container_name: redis-docker-server
     image: redis
-    # ports:
-    #   - "6379:6379"
+    ports:
+      - "6379:6379"
